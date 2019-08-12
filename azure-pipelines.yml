@@ -39,10 +39,8 @@ steps:
     projects: '$(Parameters.TestProjects)'
     arguments: '--configuration $(BuildConfiguration) --collect "Code coverage"'
 
-# Publish Test Results
-# Publish test results to Azure Pipelines
-- script: dotnet test <test-project> --logger trx --collect "Code coverage"
 - task: PublishTestResults@2
+  displayName: Publish Test Result
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
